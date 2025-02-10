@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/09 21:39:03 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:49:08 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	read_map(char *file, t_map *map)
 		return (0);
 
 	// Allocate memory for z_values
-	map->z_values = (int **)malloc(sizeof(int *) * 1000); // Temporary size, adjust as needed
+	map->z_values = (int **)malloc(sizeof(int *) * 1000); // Temporary size, adjust as needed // düzelt
 	if (!map->z_values)
 		return (0);
 

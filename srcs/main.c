@@ -6,12 +6,11 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:14:49 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/09 21:22:47 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:24:23 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -34,6 +33,10 @@ int	main(int argc, char **argv)
 	// Initialize MiniLibX
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "FdF");
+	data.bit = 32;
+	data.len = (1500*32) / 8;
+	data.image = mlx_new_image(data.mlx,1500,900);
+	data.img = mlx_get_data_addr(data.image,&data.bit,&data.len,&data.endian);
 
 	// Read the map
 	if (!read_map(argv[1], data.map))
@@ -42,9 +45,13 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
-	// Draw the map and start the event loop
+	// Draw the map
 	draw_map(&data);
-	mlx_key_hook(data.win, handle_key, &data);
+
+	// Set up key press event hook
+	mlx_hook(data.win, 2, 1L << 0, handle_key, &data); // 2 = KeyPress event, 1L << 0 = KeyPressMask
+
+	// Start the event loop
 	mlx_loop(data.mlx);
 
 	return (0);

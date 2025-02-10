@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/09 21:34:05 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:04:14 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1500
+# define HEIGHT 900
 # define COLOR 0xFFFFFF
 
 typedef struct s_point
@@ -44,7 +44,12 @@ typedef struct s_map
 typedef struct s_data
 {
 	void *mlx;
+	void *image;
+	char *img;
 	void *win;
+	int len;
+	int endian;
+	int bit;
 	t_map *map;
 } t_data;
 
