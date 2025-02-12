@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:14:49 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/11 00:24:23 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/12 00:19:15 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	main(int argc, char **argv)
 	// Initialize MiniLibX
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "FdF");
-	data.bit = 32;
-	data.len = (1500*32) / 8;
-	data.image = mlx_new_image(data.mlx,1500,900);
-	data.img = mlx_get_data_addr(data.image,&data.bit,&data.len,&data.endian);
+
+	// Create image
+	data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
+	data.img = mlx_get_data_addr(data.image, &data.bit, &data.len, &data.endian);
 
 	// Read the map
 	if (!read_map(argv[1], data.map))

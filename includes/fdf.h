@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/11 00:04:14 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/11 23:31:40 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	draw_map(t_data *data);
 int		handle_key(int keycode, t_data *data);
 void	cleanup(t_data *data);
 char	**ft_split(char const *s, char c);
-int	ft_atoi(const char *a);
+int		ft_atoi(const char *a);
 
 #endif

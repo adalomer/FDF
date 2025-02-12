@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:16:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/10 23:49:15 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/12 00:20:12 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@ void	cleanup(t_data *data)
 		y = 0;
 		while (y < data->map->height)
 		{
-			free(data->map->z_values[y]); //seg
+			free(data->map->z_values[y]);
 			y++;
 		}
 		free(data->map->z_values);
 		free(data->map);
 	}
+	if (data->image)
+		mlx_destroy_image(data->mlx, data->image);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
 		free(data->mlx);
-	exit (1);
+	}
+	exit(1);
 }
 
 int	ft_atoi(const char *a)

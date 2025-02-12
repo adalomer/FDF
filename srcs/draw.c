@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/11 00:23:49 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/12 01:12:47 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_line(t_data *data, t_point p1, t_point p2)
 	int	sy;
 	int	err;
 	int	e2;
-	int pixel;
+	int	pixel;
 
 	dx = abs(p2.x - p1.x);
 	dy = abs(p2.y - p1.y);
@@ -29,10 +29,10 @@ void	draw_line(t_data *data, t_point p1, t_point p2)
 	err = dx - dy;
 	while (1)
 	{
-		if ((p1.x < 1500 && p1.x > 0) && (p1.y < 900 && p1.y > 0))
+		if ((p1.x < WIDTH && p1.x >= 0) && (p1.y < HEIGHT && p1.y >= 0))
 		{
-			pixel = (p1.y * data->len) + p1.x * (data->bit /8);
-			*(unsigned int*)(data + pixel) = COLOR;
+			pixel = (p1.y * data->len) + (p1.x * (data->bit / 8));
+			*(unsigned int*)(data->img + pixel) = COLOR;
 		}
 		if (p1.x == p2.x && p1.y == p2.y)
 			break;
@@ -54,15 +54,15 @@ t_point	project(t_point p, t_data *data)
 {
 	t_point	projected;
 	float	angle;
-	(void) data;
+
 	angle = 0.523599; // 30 degrees in radians (π/6)
 
-	// Apply isometric projection
-	projected.x = (p.x - p.y) * cos(angle)* 20 + 700; //scale carpan at 20 scale sayın
-	projected.y = (p.x + p.y) * sin(angle)* 20 - p.z + 200; // scale carpan at
-
-	// Scale and translate to center the map
+	p.x -= (data->map->width / 2);
+	p.y -= (data->map->height / 2);
 	
+	// Apply isometric projection
+	projected.x = (p.x - p.y) * cos(angle) * 20 + WIDTH / 2;
+	projected.y = (p.x + p.y) * sin(angle) * 20 - p.z + HEIGHT / 2;
 
 	return (projected);
 }
@@ -100,5 +100,5 @@ void	draw_map(t_data *data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx,data->win,data->image,0,0);
+	mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
 }
