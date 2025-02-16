@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/17 00:58:54 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/17 02:40:23 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_line(t_data *data, t_point p1, t_point p2)
 		}
 		if (p1.x == p2.x && p1.y == p2.y)
 			break;
-		e2 = 2 * err;
+		e2 = err;
 		if (e2 > -dy)
 		{
 			err -= dy;
