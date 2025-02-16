@@ -6,13 +6,13 @@
 #    By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 12:56:30 by omadali           #+#    #+#              #
-#    Updated: 2025/02/09 21:33:05 by omadali          ###   ########.fr        #
+#    Updated: 2025/02/17 00:51:26 by omadali          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = srcs/main.c srcs/map_parser.c srcs/draw.c srcs/events.c srcs/utils.c srcs2/ft_split.c srcs2/get_next_line_utils.c srcs2/get_next_line.c
+SRCS = srcs/main.c srcs/map_parser.c srcs/draw.c srcs/events.c srcs/utils.c srcs2/ft_split.c srcs2/get_next_line_utils.c srcs2/get_next_line.c 
 
 OBJS = $(SRCS:.c=.o)
 

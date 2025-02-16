@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/11 23:31:40 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/17 00:47:11 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_map
 	int width;
 	int height;
 	int **z_values;
+	int z_max;
 	int **colors;
 } t_map;
 

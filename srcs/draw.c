@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/12 01:12:47 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/17 00:58:54 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,21 @@ t_point	project(t_point p, t_data *data)
 {
 	t_point	projected;
 	float	angle;
+	float	scale;
 
 	angle = 0.523599; // 30 degrees in radians (π/6)
 
+	// Calculate scale based on map size
+	scale = fmin((float)WIDTH / (data->map->width * 2), (float)HEIGHT / (data->map->height * 2));
+	scale = fmin(scale, 20.0f); // Limit the maximum scale
+
+	// Center the map
 	p.x -= (data->map->width / 2);
 	p.y -= (data->map->height / 2);
-	
+
 	// Apply isometric projection
-	projected.x = (p.x - p.y) * cos(angle) * 20 + WIDTH / 2;
-	projected.y = (p.x + p.y) * sin(angle) * 20 - p.z + HEIGHT / 2;
+	projected.x = (p.x - p.y) * cos(angle) * scale + WIDTH / 2;
+	projected.y = (p.x + p.y) * sin(angle) * scale - p.z * (scale / 3.5) + HEIGHT / 2;
 
 	return (projected);
 }
