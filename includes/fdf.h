@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/17 00:47:11 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/18 02:16:58 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_data
 	char *img;
 	void *win;
 	int len;
-	int endian;
+	int edn;
 	int bit;
 	t_map *map;
 } t_data;
@@ -62,5 +62,10 @@ int		handle_key(int keycode, t_data *data);
 void	cleanup(t_data *data);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *a);
+void	draw_pixel(t_data *data, t_point p);
+void	update_error(t_point *p1, int sx, int sy, int *err, int dx, int dy);
+void	draw_horizontal_line(t_data *data, int x, int y);
+void	draw_vertical_line(t_data *data, int x, int y);
+t_point	project(t_point p, t_data *data);
 
 #endif
