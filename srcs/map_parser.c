@@ -6,27 +6,11 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 02:28:56 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	count_words(char *line, char a)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != a && (line[i + 1] == a || line[i + 1] == '\0'))
-			count++;
-		i++;
-	}
-	return (count);
-}
 
 void	fill_z_values(t_map *map, char *line, int y)
 {
@@ -97,4 +81,3 @@ int	read_map(char *file, t_map *map)
 		return (0);
 	return (process_lines(fd, map));
 }
-

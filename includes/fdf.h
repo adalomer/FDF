@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 02:16:58 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/18 23:03:25 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ typedef struct s_data
 	t_map *map;
 } t_data;
 
+typedef struct s_bresenham
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+}	t_bresenham;
+
 // Function prototypes
 int		read_map(char *file, t_map *map);
 void	draw_line(t_data *data, t_point p1, t_point p2);
@@ -67,5 +76,8 @@ void	update_error(t_point *p1, int sx, int sy, int *err, int dx, int dy);
 void	draw_horizontal_line(t_data *data, int x, int y);
 void	draw_vertical_line(t_data *data, int x, int y);
 t_point	project(t_point p, t_data *data);
+void	draw_map(t_data *data);
+void	draw_line_between_points(t_data *data, int x1, int y1, int x2, int y2);
+int	count_words(char *line, char a);
 
 #endif
