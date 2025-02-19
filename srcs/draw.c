@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 23:07:04 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/19 23:41:34 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,11 @@ void	draw_pixel(t_data *data, t_point p)
 	}
 }
 
-void	draw_line_between_points(t_data *data, int x1, int y1, int x2, int y2)
+void	draw_line_between_points(t_data *data, t_point p1, t_point p2)
 {
-	t_point	p1;
-	t_point	p2;
-
-	p1.x = x1;
-	p1.y = y1;
-	p1.z = data->map->z_values[y1][x1];
+	p1.z = data->map->z_values[p1.y][p1.x];
 	p1.color = COLOR;
-	p2.x = x2;
-	p2.y = y2;
-	p2.z = data->map->z_values[y2][x2];
+	p2.z = data->map->z_values[p2.y][p2.x];
 	p2.color = COLOR;
 	p1 = project(p1, data);
 	p2 = project(p2, data);

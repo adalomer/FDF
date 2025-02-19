@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/19 22:04:41 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/20 01:53:52 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,32 @@
 
 typedef struct s_point
 {
-	int x;
-	int y;
-	int z;
-	int color;
-} t_point;
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}	t_point;
 
 typedef struct s_map
 {
-	int width;
-	int height;
-	int **z_values;
-	int z_max;
-	int **colors;
-} t_map;
+	int	width;
+	int	height;
+	int	**z_values;
+	int	z_max;
+	int	**colors;
+}	t_map;
 
 typedef struct s_data
 {
-	void *mlx;
-	void *image;
-	char *img;
-	void *win;
-	int len;
-	int edn;
-	int bit;
-	t_map *map;
-} t_data;
+	void	*mlx;
+	void	*image;
+	char	*img;
+	void	*win;
+	int		len;
+	int		edn;
+	int		bit;
+	t_map	*map;
+}	t_data;
 
 typedef struct s_bresenham
 {
@@ -76,7 +76,7 @@ void	draw_horizontal_line(t_data *data, int x, int y);
 void	draw_vertical_line(t_data *data, int x, int y);
 t_point	project(t_point p, t_data *data);
 void	draw_map(t_data *data);
-void	draw_line_between_points(t_data *data, int x1, int y1, int x2, int y2);
+void	draw_line_between_points(t_data *data, t_point p1, t_point p2);
 int		count_words(char *line, char a);
 
 #endif

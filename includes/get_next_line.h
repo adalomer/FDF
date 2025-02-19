@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:00:55 by omadali           #+#    #+#             */
-/*   Updated: 2024/11/10 12:05:27 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/20 01:55:04 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #  define BUFFER_SIZE 5
 # endif
 
-#include <stdlib.h>
+# include <stdlib.h>
 
 char	*ft_get_slice(char *cake);
 char	*ft_get_leftover(char *cake);

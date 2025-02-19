@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:00:19 by omadali           #+#    #+#             */
-/*   Updated: 2024/11/10 12:08:59 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/20 01:51:08 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_get_slice(char *cake)
 	if (cake[i] == '\n')
 	{
 		slice[i] = cake[i];
-		i++;		
+		i++;
 	}
 	slice[i] = '\0';
 	return (slice);
@@ -67,6 +67,7 @@ char	*ft_get_leftover(char *cake)
 	free(cake);
 	return (new_cake);
 }
+
 char	*ft_make_cake(int fd, char *cake)
 {
 	char	*new_slice;

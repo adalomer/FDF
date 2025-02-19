@@ -6,83 +6,60 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:16:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 22:59:12 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/20 01:49:55 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	cleanup(t_data *data)
+void	draw_horizontal_lines(t_data *data, int y)
 {
-	int	y;
+	int		x;
+	t_point	p1;
+	t_point	p2;
 
-	if (data->map)
+	x = 0;
+	while (x < data->map->width - 1)
 	{
-		y = 0;
-		while (y < data->map->height)
-		{
-			free(data->map->z_values[y]);
-			y++;
-		}
-		free(data->map->z_values);
-		free(data->map);
+		p1 = (t_point){x, y, 0, COLOR};
+		p2 = (t_point){x + 1, y, 0, COLOR};
+		draw_line_between_points(data, p1, p2);
+		x++;
 	}
-	if (data->image)
-		mlx_destroy_image(data->mlx, data->image);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
-	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-	}
-	exit(1);
 }
 
-int	ft_atoi(const char *a)
+void	draw_vertical_lines(t_data *data, int x)
 {
-	int	b;
-	int	c;
-	int	d;
+	int		y;
+	t_point	p1;
+	t_point	p2;
 
-	b = 0;
-	c = 1;
-	d = 0;
-	while ((a[b] >= 9 && a[b] <= 13) || a[b] == 32)
-		b++;
-	if (a[b] == '-')
+	y = 0;
+	while (y < data->map->height - 1)
 	{
-		c = -1;
-		b++;
+		p1 = (t_point){x, y, 0, COLOR};
+		p2 = (t_point){x, y + 1, 0, COLOR};
+		draw_line_between_points(data, p1, p2);
+		y++;
 	}
-	else if (a[b] == '+')
-		b++;
-	while (a[b] >= '0' && a[b] <= '9')
-	{
-		d = d * 10 + (a[b] - '0');
-		b++;
-	}
-	return (d * c);
 }
 
 void	draw_map(t_data *data)
 {
-	int		x;
-	int		y;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < data->map->height)
 	{
-		x = 0;
-		while (x < data->map->width)
-		{
-			if (x < data->map->width - 1)
-				draw_line_between_points(data, x, y, x + 1, y);
-			if (y < data->map->height - 1)
-				draw_line_between_points(data, x, y, x, y + 1);
-			x++;
-		}
+		draw_horizontal_lines(data, y);
 		y++;
+	}
+	x = 0;
+	while (x < data->map->width)
+	{
+		draw_vertical_lines(data, x);
+		x++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
 }
