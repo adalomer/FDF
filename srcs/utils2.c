@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 01:48:19 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/28 15:39:05 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:17:53 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cleanup(t_data *data)
 {
 	int	y;
 
-	if (data->map)
+	if (data->map->z_values)
 	{
 		y = 0;
 		while (data->map->z_values[y])
