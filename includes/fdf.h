@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/20 01:53:52 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/28 15:35:25 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "get_next_line.h"
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -38,6 +38,7 @@ typedef struct s_map
 	int	width;
 	int	height;
 	int	**z_values;
+	int	row;
 	int	z_max;
 	int	**colors;
 }	t_map;

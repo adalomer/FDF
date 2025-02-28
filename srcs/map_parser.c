@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/28 15:34:42 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,25 @@ int	open_map_file(char *file)
 	return (fd);
 }
 
-int	allocate_z_values(t_map *map)
+int	checkrow(char *str)
 {
-	map->z_values = (int **)malloc(sizeof(int *) * 1000);
+	int a;
+	int fd;
+
+	a = 0;
+	fd = open(str, O_RDONLY);
+	while(get_next_line(fd) != NULL)
+		a++;
+	return (a);
+}
+
+int	allocate_z_values(t_map *map,char *file)
+{
+	int b;
+
+	b = checkrow(file);
+	map->row = b;
+	map->z_values = (int **)malloc(sizeof(int *) * b);
 	if (!map->z_values)
 		return (0);
 	return (1);
@@ -77,7 +93,7 @@ int	read_map(char *file, t_map *map)
 	fd = open_map_file(file);
 	if (fd < 0)
 		return (0);
-	if (!allocate_z_values(map))
+	if (!allocate_z_values(map,file))
 		return (0);
 	return (process_lines(fd, map));
 }
