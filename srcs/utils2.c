@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 01:48:19 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/28 16:17:53 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/27 09:51:52 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	cleanup(t_data *data)
 {
 	int	y;
 
-	if (data->map->z_values)
+	if (data->map)
 	{
 		y = 0;
-		while (data->map->z_values[y])
+		while (y < data->map->height)
 		{
 			free(data->map->z_values[y]);
 			y++;
@@ -63,4 +63,25 @@ int	ft_atoi(const char *a)
 		b++;
 	}
 	return (d * c);
+}
+int	ft_atoi_base(const char *str, int base)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			result = result * base + (str[i] - '0');
+		else if (str[i] >= 'A' && str[i] <= 'F')
+			result = result * base + (str[i] - 'A' + 10);
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			result = result * base + (str[i] - 'a' + 10);
+		else
+			break ;
+		i++;
+	}
+	return (result);
 }

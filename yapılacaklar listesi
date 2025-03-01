@@ -1,0 +1,43 @@
+Öğrenmen Gerekenler
+MiniLibX Kütüphanesi
+
+Pencere açma ve kapatma
+Görüntü oluşturma ve çizim yapma
+Klavye ve fare olaylarını yönetme
+İzometrik Projeksiyon
+
+3D noktaları 2D ekrana uygun şekilde dönüştürme
+Perspektif hesaplamaları
+Dosya Okuma ve Veri Yapıları
+
+.fdf dosyasındaki yükseklik verilerini okuma
+Noktaları ve bağlantıları uygun veri yapılarıyla saklama
+Çizgi Çizme Algoritmaları
+
+Bresenham Algoritması ile çizgileri ekrana çizme
+Bellek Yönetimi
+
+Bellek sızıntılarından kaçınmak için malloc ve free kullanımı
+Proje Tamamlama Yönergeleri
+Temel Yapıyı Kur
+
+MiniLibX ile pencere aç
+fdf dosyasını oku ve verileri uygun veri yapısına yerleştir
+Görselleştirme ve Çizim
+
+İzometrik projeksiyon ile verileri ekrana yansıt
+Çizgileri Bresenham algoritmasıyla çiz
+Kullanıcı Etkileşimi Ekle
+
+ESC tuşuyla çıkış
+Fare ve klavye kontrolleriyle navigasyon ekleyebilirsin (Bonus için)
+Test ve Hata Giderme
+
+Farklı .fdf dosyalarıyla test yap
+Hafıza sızıntıları için valgrind kullan
+Kodunuzu Temizleyin ve Teslim Edin
+
+Norm kurallarına uygunluk kontrolü yap
+Git deposuna yükleyerek projeyi teslim et
+
+bresenham algoritması

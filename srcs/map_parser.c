@@ -6,45 +6,11 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/28 17:42:49 by omadali          ###   ########.fr       */
+/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	colorcheck(char **str, t_map *map)
-{
-	int a;
-	int b;
-
-	b = 0;
-	while(str[b] != '\0')
-	{
-		a = 0;
-		while(str[b][a] != '\0')
-		{
-			if(str[b][a] == ',')
-			{
-				coloreplace(str[b],a,map);
-			}
-			a++;		
-		}
-		b++;
-	}	
-}
-
-int	coloreplace(char *str, int a,t_map *map)
-{
-	int b;
-
-	b = 0;
-	while(str[a] != '\0')
-	{
-		map->colors
-	}
-	
-}
-
 
 void	fill_z_values(t_map *map, char *line, int y)
 {
@@ -53,7 +19,6 @@ void	fill_z_values(t_map *map, char *line, int y)
 
 	split = ft_split(line, ' ');
 	x = 0;
-	colorcheck(split,t_map *map);
 	while (split[x])
 	{
 		map->z_values[y][x] = ft_atoi(split[x]);
@@ -73,31 +38,9 @@ int	open_map_file(char *file)
 	return (fd);
 }
 
-int	checkrow(char *str)
+int	allocate_z_values(t_map *map)
 {
-	int a;
-	int fd;
-	char *b;
-	
-	a = 0;
-	fd = open(str, O_RDONLY);
-	while((b = get_next_line(fd)) != NULL)
-	{
-		a++;
-		free(b);
-	}
-	close (fd);
-	return (a);
-}
-
-int	allocate_z_values(t_map *map,char *file)
-{
-	int b;
-
-	b = checkrow(file);
-	map->row = b;
-	map->z_values = (int **)malloc(sizeof(int *) * b);
-	map->colors = (int **)malloc(sizeof(int) * b);
+	map->z_values = (int **)malloc(sizeof(int *) * 1000);
 	if (!map->z_values)
 		return (0);
 	return (1);
@@ -134,7 +77,7 @@ int	read_map(char *file, t_map *map)
 	fd = open_map_file(file);
 	if (fd < 0)
 		return (0);
-	if (!allocate_z_values(map,file))
+	if (!allocate_z_values(map))
 		return (0);
 	return (process_lines(fd, map));
 }
