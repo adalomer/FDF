@@ -22,9 +22,11 @@ void	cleanup(t_data *data)
 		while (y < data->map->height)
 		{
 			free(data->map->z_values[y]);
+			free(data->map->colors[y]);
 			y++;
 		}
 		free(data->map->z_values);
+		free(data->map->colors);
 		free(data->map);
 	}
 	if (data->image)
@@ -64,23 +66,35 @@ int	ft_atoi(const char *a)
 	}
 	return (d * c);
 }
+
+static int	get_hex_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (c - '0');
+	if (c >= 'a' && c <= 'f')
+		return (c - 'a' + 10);
+	if (c >= 'A' && c <= 'F')
+		return (c - 'A' + 10);
+	return (-1);
+}
+
 int	ft_atoi_base(const char *str, int base)
 {
 	int	result;
+	int	digit;
 	int	i;
 
 	result = 0;
 	i = 0;
+	// "0x" veya "0X" prefix'ini atla
+	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
+		i = 2;
 	while (str[i])
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			result = result * base + (str[i] - '0');
-		else if (str[i] >= 'A' && str[i] <= 'F')
-			result = result * base + (str[i] - 'A' + 10);
-		else if (str[i] >= 'a' && str[i] <= 'f')
-			result = result * base + (str[i] - 'a' + 10);
-		else
+		digit = get_hex_digit(str[i]);
+		if (digit == -1)
 			break ;
+		result = result * base + digit;
 		i++;
 	}
 	return (result);

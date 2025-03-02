@@ -21,8 +21,8 @@ void	draw_horizontal_lines(t_data *data, int y)
 	x = 0;
 	while (x < data->map->width - 1)
 	{
-		p1 = (t_point){x, y, 0, COLOR};
-		p2 = (t_point){x + 1, y, 0, COLOR};
+		p1 = (t_point){x, y, data->map->z_values[y][x], data->map->colors[y][x]};
+		p2 = (t_point){x + 1, y, data->map->z_values[y][x + 1], data->map->colors[y][x + 1]};
 		draw_line_between_points(data, p1, p2);
 		x++;
 	}
@@ -37,8 +37,8 @@ void	draw_vertical_lines(t_data *data, int x)
 	y = 0;
 	while (y < data->map->height - 1)
 	{
-		p1 = (t_point){x, y, 0, COLOR};
-		p2 = (t_point){x, y + 1, 0, COLOR};
+		p1 = (t_point){x, y, data->map->z_values[y][x], data->map->colors[y][x]};
+		p2 = (t_point){x, y + 1, data->map->z_values[y + 1][x], data->map->colors[y + 1][x]};
 		draw_line_between_points(data, p1, p2);
 		y++;
 	}

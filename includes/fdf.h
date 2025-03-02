@@ -78,5 +78,6 @@ t_point	project(t_point p, t_data *data);
 void	draw_map(t_data *data);
 void	draw_line_between_points(t_data *data, t_point p1, t_point p2);
 int		count_words(char *line, char a);
+int	ft_atoi_base(const char *str, int base);
 
 #endif
