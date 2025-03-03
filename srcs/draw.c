@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/27 09:42:31 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:44:37 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,16 @@ t_point	project(t_point p, t_data *data)
 	angle = 0.523599;
 	scale = fmin((float)WIDTH / (data->map->width * 2),
 			(float)HEIGHT / (data->map->height * 2));
-	
-	if (data->map->width <= 11 && data->map->height <= 11)  // Sadece 42.fdf gibi küçük haritalar için
+	if (data->map->width <= 11 && data->map->height <= 11)
 		scale = fmin(scale, 30.0f);
 	else
 		scale = fmin(scale, 20.0f);
-
 	p.x -= (data->map->width / 2);
 	p.y -= (data->map->height / 2);
 	projected.x = (p.x - p.y) * cos(angle) * scale + WIDTH / 2;
 	projected.y = (p.x + p.y) * sin(angle) * scale
 		- p.z * (scale / 3.5) + HEIGHT / 2;
 	projected.color = p.color;
-
 	return (projected);
 }
 
@@ -85,16 +82,13 @@ void    draw_pixel(t_data *data, t_point p)
     if ((p.x < WIDTH && p.x >= 0) && (p.y < HEIGHT && p.y >= 0))
     {
         pixel = (p.y * data->len) + (p.x * (data->bit / 8));
-        *(unsigned int *)(data->img + pixel) = p.color;  // COLOR sabiti yerine noktanın rengini kullan
+        *(unsigned int *)(data->img + pixel) = p.color;
     }
 }
 void    draw_line_between_points(t_data *data, t_point p1, t_point p2)
 {
-    // Z değerlerini ve renkleri ayarla
     p1.z = data->map->z_values[p1.y][p1.x];
     p2.z = data->map->z_values[p2.y][p2.x];
-    
-    // Renkleri ayarla (eğer renk desteği eklendiyse)
     if (data->map->colors)
     {
         p1.color = data->map->colors[p1.y][p1.x];
@@ -105,11 +99,7 @@ void    draw_line_between_points(t_data *data, t_point p1, t_point p2)
         p1.color = COLOR;
         p2.color = COLOR;
     }
-
-    // İzometrik projeksiyon uygula
     p1 = project(p1, data);
     p2 = project(p2, data);
-
-    // Çizgiyi çiz
     draw_line(data, p1, p2);
 }
