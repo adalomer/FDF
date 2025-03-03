@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-SRCS = srcs/main.c srcs/map_parser.c srcs/draw.c srcs/events.c srcs/utils.c srcs2/ft_split.c srcs2/get_next_line_utils.c srcs2/get_next_line.c srcs/utils2.c
+SRCS = srcs/main.c srcs/map_parser.c srcs/draw.c srcs/events.c srcs/map_memory.c srcs/map_dimensions.c srcs/utils.c srcs2/ft_split.c srcs2/get_next_line_utils.c srcs2/get_next_line.c srcs/utils2.c
 
 OBJS = $(SRCS:.c=.o)
 
