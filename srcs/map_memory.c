@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 22:00:44 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	free_map_values(t_map *map)
 {
 	int	i;
 
+	i = 0;
 	if (map->z_values)
 	{
-		i = 0;
 		while (i < map->height)
 		{
 			if (map->z_values[i])
@@ -71,7 +71,6 @@ void	free_map_values(t_map *map)
 	}
 	if (map->colors)
 	{
-		i = 0;
 		while (i < map->height)
 		{
 			if (map->colors[i])
@@ -82,4 +81,4 @@ void	free_map_values(t_map *map)
 	}
 	map->z_values = NULL;
 	map->colors = NULL;
-} 
+}

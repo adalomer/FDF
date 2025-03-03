@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:14:49 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 02:18:44 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:51:44 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "BABACIK");
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "FDF");
 	data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img = mlx_get_data_addr(data.image, &data.bit, &data.len, &data.edn);
 	if (!read_map(argv[1], data.map))

@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:57:04 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	open_map_file(char *file)
 		return (-1);
 	return (fd);
 }
-
 
 int	read_map(char *file, t_map *map)
 {

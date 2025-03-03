@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omadali <adalomer60@gmail.com>             +#+  +:+       +#+        */
+/*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 01:48:19 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/27 09:51:52 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:56:51 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	ft_atoi_base(const char *str, int base)
 
 	result = 0;
 	i = 0;
-	// "0x" veya "0X" prefix'ini atla
 	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
 		i = 2;
 	while (str[i])

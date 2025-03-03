@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/18 22:58:37 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:57:53 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,4 @@ int	process_lines(int fd, t_map *map)
 	}
 	close(fd);
 	return (1);
-} 
+}

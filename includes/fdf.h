@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/20 01:53:52 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:55:13 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "get_next_line.h"
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -78,18 +78,12 @@ t_point	project(t_point p, t_data *data);
 void	draw_map(t_data *data);
 void	draw_line_between_points(t_data *data, t_point p1, t_point p2);
 int		count_words(char *line, char a);
-int	ft_atoi_base(const char *str, int base);
-
-// map_parser.c
+int		ft_atoi_base(const char *str, int base);
 void	fill_z_values(t_map *map, char *line, int y);
 int		open_map_file(char *file);
 int		read_map(char *file, t_map *map);
-
-// map_dimensions.c
 void	get_map_dimensions(char *file, t_map *map);
 int		process_lines(int fd, t_map *map);
-
-// map_memory.c
 int		allocate_z_values(t_map *map);
 void	free_map_values(t_map *map);
 

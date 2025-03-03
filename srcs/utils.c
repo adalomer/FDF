@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:16:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/02/20 01:49:55 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:56:37 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	draw_horizontal_lines(t_data *data, int y)
 	x = 0;
 	while (x < data->map->width - 1)
 	{
-		p1 = (t_point){x, y, data->map->z_values[y][x], data->map->colors[y][x]};
-		p2 = (t_point){x + 1, y, data->map->z_values[y][x + 1], data->map->colors[y][x + 1]};
+		p1 = (t_point){x, y, data->map->z_values[y][x],
+			data->map->colors[y][x]};
+		p2 = (t_point){x + 1, y, data->map->z_values[y][x + 1],
+			data->map->colors[y][x + 1]};
 		draw_line_between_points(data, p1, p2);
 		x++;
 	}
@@ -37,8 +39,10 @@ void	draw_vertical_lines(t_data *data, int x)
 	y = 0;
 	while (y < data->map->height - 1)
 	{
-		p1 = (t_point){x, y, data->map->z_values[y][x], data->map->colors[y][x]};
-		p2 = (t_point){x, y + 1, data->map->z_values[y + 1][x], data->map->colors[y + 1][x]};
+		p1 = (t_point){x, y, data->map->z_values[y][x],
+			data->map->colors[y][x]};
+		p2 = (t_point){x, y + 1, data->map->z_values[y + 1][x],
+			data->map->colors[y + 1][x]};
 		draw_line_between_points(data, p1, p2);
 		y++;
 	}
