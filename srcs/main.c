@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:14:49 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/05 02:25:31 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 02:50:17 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 		cleanup(&data);
 	draw_map(&data);
 	mlx_hook(data.win, 2, 1L << 0, handle_key, &data);
-	mlx_hook(data.win, 17, 0, handle_key, &data);
+	mlx_hook(data.win, 17, 0, handle_close, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

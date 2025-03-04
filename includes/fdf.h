@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/05 01:29:17 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 02:50:39 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	get_map_dimensions(char *file, t_map *map);
 int		process_lines(int fd, t_map *map);
 int		allocate_z_values(t_map *map);
 void	free_map_values(t_map *map);
+int 	handle_close(t_data *data);
 
 #endif
