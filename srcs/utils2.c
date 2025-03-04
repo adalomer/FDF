@@ -6,11 +6,12 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 01:48:19 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 21:56:51 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 01:29:46 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
 
 void	cleanup(t_data *data)
 {

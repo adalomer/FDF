@@ -6,37 +6,48 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:14:49 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 21:51:44 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 02:25:31 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-int	cleanup1(t_data *data)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	y;
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
 
-	if (data->map)
+int	checker(char **str)
+{
+	int		len;
+	int		fd;
+
+	if (!str[1])
 	{
-		y = 0;
-		while (y < data->map->height)
-		{
-			free(data->map->z_values[y]);
-			y++;
-		}
-		free(data->map->z_values);
-		free(data->map);
+		write(2, "Error\n", 6);
+		exit(1);
 	}
-	if (data->image)
-		mlx_destroy_image(data->mlx, data->image);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
+	len = ft_strlen(str[1]);
+	if (len < 4 || ft_strcmp(&str[1][len - 4], ".fdf") != 0)
 	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		write(2, "Error\n", 6);
+		exit(1);
 	}
-	exit(1);
+	fd = open(str[1], O_RDONLY);
+	if (fd == -1)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	close(fd);
 	return (1);
 }
 
@@ -46,9 +57,10 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(1, "Usage: ./fdf <map_file>\n", 24);
+		write(1, "Error\n", 6);
 		return (1);
 	}
+	checker(argv);
 	data.map = (t_map *)malloc(sizeof(t_map));
 	if (!data.map)
 	{
@@ -60,10 +72,10 @@ int	main(int argc, char **argv)
 	data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img = mlx_get_data_addr(data.image, &data.bit, &data.len, &data.edn);
 	if (!read_map(argv[1], data.map))
-		cleanup1(&data);
+		cleanup(&data);
 	draw_map(&data);
 	mlx_hook(data.win, 2, 1L << 0, handle_key, &data);
-	mlx_hook(data.win, 17, 0, cleanup1, &data);
+	mlx_hook(data.win, 17, 0, handle_key, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

@@ -6,11 +6,13 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 21:57:53 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 01:30:53 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <unistd.h>
+#include <fcntl.h>
 
 void	get_map_dimensions(char *file, t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:13:42 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 21:55:13 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 01:29:17 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include "get_next_line.h"
 # include "../minilibx-linux/mlx.h"
-# include <math.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
 
 # define WIDTH 1500
 # define HEIGHT 900
@@ -38,7 +33,6 @@ typedef struct s_map
 	int	width;
 	int	height;
 	int	**z_values;
-	int	z_max;
 	int	**colors;
 }	t_map;
 

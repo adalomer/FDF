@@ -6,11 +6,12 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:18 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 22:00:44 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 01:43:15 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
 
 static void	free_allocated_memory(t_map *map, int i)
 {
@@ -29,7 +30,13 @@ static int	allocate_row(t_map *map, int i)
 	map->z_values[i] = (int *)malloc(sizeof(int) * map->width);
 	map->colors[i] = (int *)malloc(sizeof(int) * map->width);
 	if (!map->z_values[i] || !map->colors[i])
+	{
+		if (map->z_values[i])
+			free(map->z_values[i]);
+		if (map->colors[i])
+			free(map->colors[i]);
 		return (0);
+	}
 	return (1);
 }
 
@@ -69,6 +76,7 @@ void	free_map_values(t_map *map)
 		}
 		free(map->z_values);
 	}
+	i = 0;
 	if (map->colors)
 	{
 		while (i < map->height)

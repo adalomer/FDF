@@ -6,11 +6,12 @@
 /*   By: omadali <omadali@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:15:54 by omadali           #+#    #+#             */
-/*   Updated: 2025/03/03 21:59:53 by omadali          ###   ########.fr       */
+/*   Updated: 2025/03/05 01:25:26 by omadali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <math.h>
 
 void	draw_line(t_data *data, t_point p1, t_point p2)
 {
