@@ -31,7 +31,7 @@ void	fill_z_values(t_map *map, char *line, int y)
 
 	split = ft_split(line, ' ');
 	x = 0;
-	while (split[x])
+	while (split[x] && x < map->width )
 	{
 		color_split = ft_split(split[x], ',');
 		map->z_values[y][x] = ft_atoi(color_split[0]);
