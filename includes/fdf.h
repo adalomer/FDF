@@ -59,15 +59,12 @@ typedef struct s_bresenham
 
 int		read_map(char *file, t_map *map);
 void	draw_line(t_data *data, t_point p1, t_point p2);
-void	draw_map(t_data *data);
 int		handle_key(int keycode, t_data *data);
 void	cleanup(t_data *data);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *a);
 void	draw_pixel(t_data *data, t_point p);
 void	update_error(t_point *p1, t_bresenham *bres);
-void	draw_horizontal_line(t_data *data, int x, int y);
-void	draw_vertical_line(t_data *data, int x, int y);
 t_point	project(t_point p, t_data *data);
 void	draw_map(t_data *data);
 void	draw_line_between_points(t_data *data, t_point p1, t_point p2);

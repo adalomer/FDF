@@ -23,13 +23,31 @@ static void	free_splits(char *split_str, char **color_split)
 	free(split_str);
 }
 
-void	fill_z_values(t_map *map, char *line, int y)
+static char *trim_end(char *line)
+{
+	int len;
+	
+	if (!line)
+		return (NULL);
+	len = ft_strlen(line);
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\n' || line[len - 1] == '\t'))
+	{
+		line[len - 1] = '\0';
+		len--;
+	}
+	return (line);
+}
+
+void fill_z_values(t_map *map, char *line, int y)
 {
 	char	**split;
 	char	**color_split;
 	int		x;
 
+	line = trim_end(line);
 	split = ft_split(line, ' ');
+	if (!split)
+		return;
 	x = 0;
 	while (split[x] && x < map->width )
 	{
