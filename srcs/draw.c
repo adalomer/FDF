@@ -15,7 +15,7 @@
 
 void	draw_line(t_data *data, t_point p1, t_point p2)
 {
-	t_bresenham	bres;
+	t_bresenham bres;
 
 	bres.dx = abs(p2.x - p1.x);
 	bres.dy = abs(p2.y - p1.y);
@@ -32,7 +32,7 @@ void	draw_line(t_data *data, t_point p1, t_point p2)
 	{
 		draw_pixel(data, p1);
 		if (p1.x == p2.x && p1.y == p2.y)
-			break ;
+			break;
 		update_error(&p1, &bres);
 	}
 }
@@ -80,10 +80,13 @@ void	draw_pixel(t_data *data, t_point p)
 {
 	int	pixel;
 
+	if (!data || !data->img)
+		return;
 	if ((p.x < WIDTH && p.x >= 0) && (p.y < HEIGHT && p.y >= 0))
 	{
 		pixel = (p.y * data->len) + (p.x * (data->bit / 8));
-		*(unsigned int *)(data->img + pixel) = p.color;
+		if (pixel >= 0 && pixel < (HEIGHT * data->len))
+			*(unsigned int *)(data->img + pixel) = p.color;
 	}
 }
 

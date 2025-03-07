@@ -14,50 +14,51 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-static void	free_splits(char *split_str, char **color_split)
-{
-	free(color_split[0]);
-	if (color_split[1])
-		free(color_split[1]);
-	free(color_split);
-	free(split_str);
-}
-
-static char *trim_end(char *line)
-{
-	int len;
-	
-	if (!line)
-		return (NULL);
-	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\n' || line[len - 1] == '\t'))
-	{
-		line[len - 1] = '\0';
-		len--;
-	}
-	return (line);
-}
-
 void fill_z_values(t_map *map, char *line, int y)
 {
 	char	**split;
 	char	**color_split;
 	int		x;
+	int		len;
 
-	line = trim_end(line);
+	if (!line || !map)
+		return;
+	
+	// Satır sonundaki boşlukları temizle
+	len = ft_strlen(line);
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\n'))
+		line[--len] = '\0';
+
 	split = ft_split(line, ' ');
 	if (!split)
 		return;
+
+	// Önce tüm satırı 0 ve varsayılan renkle doldur
 	x = 0;
-	while (split[x] && x < map->width )
+	while (x < map->width)
+	{
+		map->z_values[y][x] = 0;
+		map->colors[y][x] = COLOR;
+		x++;
+	}
+
+	// Sonra gerçek değerleri oku
+	x = 0;
+	while (split[x] && x < map->width)
 	{
 		color_split = ft_split(split[x], ',');
-		map->z_values[y][x] = ft_atoi(color_split[0]);
-		if (color_split[1])
-			map->colors[y][x] = ft_atoi_base(color_split[1], 16);
-		else
-			map->colors[y][x] = 0xFFFFFF;
-		free_splits(split[x], color_split);
+		if (color_split)
+		{
+			map->z_values[y][x] = ft_atoi(color_split[0]);
+			if (color_split[1])
+				map->colors[y][x] = ft_atoi_base(color_split[1], 16);
+			
+			free(color_split[0]);
+			if (color_split[1])
+				free(color_split[1]);
+			free(color_split);
+		}
+		free(split[x]);
 		x++;
 	}
 	free(split);
