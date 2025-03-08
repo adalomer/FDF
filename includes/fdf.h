@@ -72,11 +72,10 @@ int		count_words(char *line, char a);
 int		ft_atoi_base(const char *str, int base);
 void	fill_z_values(t_map *map, char *line, int y);
 int		open_map_file(char *file);
-int		read_map(char *file, t_map *map);
 void	get_map_dimensions(char *file, t_map *map);
 int		process_lines(int fd, t_map *map);
 int		allocate_z_values(t_map *map);
 void	free_map_values(t_map *map);
-int 	handle_close(t_data *data);
+int		handle_close(t_data *data);
 
 #endif

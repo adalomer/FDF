@@ -15,7 +15,7 @@
 
 void	draw_line(t_data *data, t_point p1, t_point p2)
 {
-	t_bresenham bres;
+	t_bresenham	bres;
 
 	bres.dx = abs(p2.x - p1.x);
 	bres.dy = abs(p2.y - p1.y);
@@ -32,7 +32,7 @@ void	draw_line(t_data *data, t_point p1, t_point p2)
 	{
 		draw_pixel(data, p1);
 		if (p1.x == p2.x && p1.y == p2.y)
-			break;
+			break ;
 		update_error(&p1, &bres);
 	}
 }
@@ -63,10 +63,7 @@ t_point	project(t_point p, t_data *data)
 	angle = 0.523599;
 	scale = fmin((float)WIDTH / (data->map->width * 2),
 			(float)HEIGHT / (data->map->height * 2));
-	if (data->map->width <= 11 && data->map->height <= 11)
-		scale = fmin(scale, 30.0f);
-	else
-		scale = fmin(scale, 20.0f);
+	scale = fmin(scale, 20.0f);
 	p.x -= (data->map->width / 2);
 	p.y -= (data->map->height / 2);
 	projected.x = (p.x - p.y) * cos(angle) * scale + WIDTH / 2;
@@ -81,7 +78,7 @@ void	draw_pixel(t_data *data, t_point p)
 	int	pixel;
 
 	if (!data || !data->img)
-		return;
+		return ;
 	if ((p.x < WIDTH && p.x >= 0) && (p.y < HEIGHT && p.y >= 0))
 	{
 		pixel = (p.y * data->len) + (p.x * (data->bit / 8));

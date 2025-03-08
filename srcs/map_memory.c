@@ -61,32 +61,33 @@ int	allocate_z_values(t_map *map)
 	return (1);
 }
 
-void	free_map_values(t_map *map)
+void	free_2d_array(void **array, int height)
 {
 	int	i;
 
 	i = 0;
+	if (array)
+	{
+		while (i < height)
+		{
+			if (array[i])
+				free(array[i]);
+			i++;
+		}
+		free(array);
+	}
+}
+
+void	free_map_values(t_map *map)
+{
 	if (map->z_values)
 	{
-		while (i < map->height)
-		{
-			if (map->z_values[i])
-				free(map->z_values[i]);
-			i++;
-		}
-		free(map->z_values);
+		free_2d_array((void **)map->z_values, map->height);
+		map->z_values = NULL;
 	}
-	i = 0;
 	if (map->colors)
 	{
-		while (i < map->height)
-		{
-			if (map->colors[i])
-				free(map->colors[i]);
-			i++;
-		}
-		free(map->colors);
+		free_2d_array((void **)map->colors, map->height);
+		map->colors = NULL;
 	}
-	map->z_values = NULL;
-	map->colors = NULL;
 }

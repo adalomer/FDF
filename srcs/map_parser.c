@@ -14,35 +14,30 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void fill_z_values(t_map *map, char *line, int y)
+char	**process_line(char *line)
 {
 	char	**split;
-	char	**color_split;
-	int		x;
 	int		len;
 
-	if (!line || !map)
-		return;
-	
-	// Satır sonundaki boşlukları temizle
+	if (!line)
+		return (NULL);
 	len = ft_strlen(line);
 	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\n'))
 		line[--len] = '\0';
-
 	split = ft_split(line, ' ');
-	if (!split)
-		return;
+	return (split);
+}
 
-	// Önce tüm satırı 0 ve varsayılan renkle doldur
-	x = 0;
+void	fill_z_and_colors(t_map *map, char **split, int y, int x)
+{
+	char	**color_split;
+
 	while (x < map->width)
 	{
 		map->z_values[y][x] = 0;
 		map->colors[y][x] = COLOR;
 		x++;
 	}
-
-	// Sonra gerçek değerleri oku
 	x = 0;
 	while (split[x] && x < map->width)
 	{
@@ -52,15 +47,27 @@ void fill_z_values(t_map *map, char *line, int y)
 			map->z_values[y][x] = ft_atoi(color_split[0]);
 			if (color_split[1])
 				map->colors[y][x] = ft_atoi_base(color_split[1], 16);
-			
 			free(color_split[0]);
-			if (color_split[1])
-				free(color_split[1]);
+			free(color_split[1]);
 			free(color_split);
 		}
 		free(split[x]);
 		x++;
 	}
+}
+
+void	fill_z_values(t_map *map, char *line, int y)
+{
+	char	**split;
+	int		x;
+
+	x = 0;
+	if (!line || !map)
+		return ;
+	split = process_line(line);
+	if (!split)
+		return ;
+	fill_z_and_colors(map, split, y, x);
 	free(split);
 }
 

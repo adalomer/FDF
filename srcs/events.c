@@ -21,8 +21,8 @@ int	handle_key(int keycode, t_data *data)
 	return (0);
 }
 
-int handle_close(t_data *data)
+int	handle_close(t_data *data)
 {
-    cleanup(data);
-    return (0);
+	cleanup(data);
+	return (0);
 }

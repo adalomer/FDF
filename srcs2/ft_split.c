@@ -12,86 +12,85 @@
 
 #include <stdlib.h>
 
+static void	free_malloc(char **f, int k)
+{
+	while (k-- > 0)
+		free(f[k]);
+}
+
 static int	word_count(const char *s, char c)
 {
-	int	count;
-	int	i;
+	int	a;
+	int	b;
 
-	i = 0;
-	count = 0;
-	while (s[i])
+	a = 0;
+	b = 0;
+	while (s[a] != '\0')
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
-			count++;
-		while (s[i] && s[i] != c)
-			i++;
+		while (s[a] == c && s[a] != '\0')
+			a++;
+		if (s[a] != c && s[a] != '\0')
+			b++;
+		while (s[a] != c && s[a] != '\0')
+			a++;
 	}
-	return (count);
+	return (b);
 }
 
-static int	word_len(const char *s, char c, int i)
+static int	word_len(const char *s, char c)
 {
-	int	len;
+	int	a;
 
-	len = 0;
-	while (s[i] && s[i] != c)
-	{
-		len++;
-		i++;
-	}
-	return (len);
+	a = 0;
+	while (s[a] && s[a] != c)
+		a++;
+	return (a);
 }
 
-static char	*wordsave(const char *str, int start, int len)
+static int	wordsave(char **f, char const *s, char c, int i)
 {
-	char	*word;
-	int		i;
+	int	b;
+	int	k;
 
-	i = 0;
-	word = (char *)malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
-	while (i < len)
+	k = 0;
+	while (s[i] != '\0')
 	{
-		word[i] = str[start + i];
-		i++;
+		if (s[i] != c)
+		{
+			b = word_len(&s[i], c);
+			f[k] = (char *)malloc(sizeof(char) * (b + 1));
+			if (!f[k])
+			{
+				free_malloc(f, k);
+				return (1);
+			}
+			b = 0;
+			while (s[i] && s[i] != c)
+				f[k][b++] = s[i++];
+			f[k++][b] = '\0';
+		}
+		else
+			i++;
 	}
-	word[i] = '\0';
-	return (word);
+	f[k] = NULL;
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
+	char	**f;
+	int		a;
 	int		i;
-	int		j;
-	int		wc;
 
-	if (!s)
-		return (NULL);
-	wc = word_count(s, c);
-	result = (char **)malloc(sizeof(char *) * (wc + 1));
-	if (!result)
-		return (NULL);
 	i = 0;
-	j = 0;
-	while (j < wc)
+	f = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
+	if (!f)
+		return (NULL);
+	a = wordsave(f, s, c, i);
+	if (a != 0)
 	{
-		while (s[i] == c)
-			i++;
-		result[j] = wordsave(s, i, word_len(s, c, i));
-		if (!result[j])
-		{
-			while (--j >= 0)
-				free(result[j]);
-			free(result);
-			return (NULL);
-		}
-		i += word_len(s, c, i);
-		j++;
+		free(f);
+		return (NULL);
 	}
-	result[j] = NULL;
-	return (result);
+	return (f);
 }
