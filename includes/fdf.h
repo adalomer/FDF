@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "get_next_line.h"
-# include "../minilibx-linux/mlx.h"
+# include "../minilibx_linux/mlx.h"
 
 # define WIDTH 1500
 # define HEIGHT 900
