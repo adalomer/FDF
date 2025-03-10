@@ -57,6 +57,8 @@ Genel bakış
 
 Bu program, bir dosyada saklanan ve parametre olarak sağlanan manzara koordinatlarına dayalı bir modelin izometrik bir projeksiyonunu oluşturur .fdf. Koordinatların nasıl yorumlandığı aşağıdadır:
 
+
+
 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0
@@ -68,6 +70,11 @@ Bu program, bir dosyada saklanan ve parametre olarak sağlanan manzara koordinat
 0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+
+
+
+
+
 Yatay konum x eksenine karşılık gelir.
 Dikey konum y eksenine karşılık gelir.
 Değer yüksekliğe (z ekseni) karşılık gelir.
