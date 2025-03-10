@@ -23,18 +23,18 @@ MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C minilibx-linux 
+	make -C minilibx_linux 
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Iincludes -c $< -o $@
 
 clean:
-	make -C minilibx-linux clean
+	make -C minilibx_linux clean
 	rm -f $(OBJS)
 
 fclean: clean
-	make -C minilibx-linux clean
+	make -C minilibx_linux clean
 	rm -f $(NAME)
 
 re: fclean all
