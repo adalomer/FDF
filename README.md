@@ -56,25 +56,6 @@ Programı çalıştırmak için aşağıdaki sözdizimini kullanın:
 Genel bakış
 
 Bu program, bir dosyada saklanan ve parametre olarak sağlanan manzara koordinatlarına dayalı bir modelin izometrik bir projeksiyonunu oluşturur .fdf. Koordinatların nasıl yorumlandığı aşağıdadır:
-
-
-
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10 10 10 10 10  0  0  0  0 10 10 10 10  0  0  0
-0  0  0 10 10 10 10 10  0  0  0 10 10  0  0  0  0  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10  0  0  0  0  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-
-
-
-
-
 Yatay konum x eksenine karşılık gelir.
 Dikey konum y eksenine karşılık gelir.
 Değer yüksekliğe (z ekseni) karşılık gelir.
@@ -237,42 +218,6 @@ Matris İşlemleri : Matris çarpımı gibi matris işlemleri, noktalara dönü�
 Denklem Sistemleri : FDF projesinin çeşitli yönlerinde doğrusal denklem sistemlerini çözmek gereklidir; örneğin noktalar arasında interpolasyon yaparak doğrular çizmek gibi.
 
 Özetle, vektörler, matrisler ve dönüşümler gibi doğrusal cebir kavramlarını anlamak, FDF projesinde noktaları ve şekilleri manipüle etmek için çok önemlidir.
-
-FDF Projesi için Otomatik Test
-run_fdf_tests.shSenaryo
-
-Betik, run_fdf_tests.shFDF projesinin test sürecini otomatikleştirmek için değerli bir araçtır. FDF programını birden fazla harita dosyasıyla çalıştırma ve bellek sızıntılarını kontrol etme görevini basitleştirir.
-
-Komut dosyası çalıştırıldığında, kullanıcıdan harita dosyalarının bulunduğu dizin yolunu girmesini ister. Eğer bir yol sağlanmazsa, varsayılan olarak bir ./mapsdizine gider.
-
-Komut dosyası, üzerinde çalıştığı işletim sistemini akıllıca algılar ve bellek sızıntılarını kontrol etmek için uygun aracı kullanır. Linux'ta, kullanırken valgrindmacOS'ta (Darwin) leakskomutunu kullanır.
-
-Belirtilen dizindeki her harita dosyası için, betik FDF programını çalıştırır, bellek sızıntısı kontrolleri gerçekleştirir ve sonuçları görüntüler. Ayrıca, şu anda hangi haritanın işlendiğini ve kaç haritanın kaldığını belirten bir ilerleme güncellemesi sağlar.
-
-Lütfen bu betiği kullanmanın FDF programının performansını etkileyebileceğini unutmayın. Bu, FDF programının kendisindeki bir kusur değil, bellek sızıntısı kontrollerinin bir sonucudur. Bu kontroller, programın bellek kullanımını ayrıntılı olarak izlemeyi içerir ve bu da kaynak yoğun olabilir.
-
-Kullanım
-
-Scripti kullanmak için şu adımları izleyin:
-
-run_fdf_tests.shKomut dosyasını FDF proje klasörüne kaydedin .
-Bir terminal açın ve FDF proje klasörüne gidin.
-Aşağıdaki komutu kullanarak betiği çalıştırın:
-bash run_fdf_tests.sh
-Değerlendirme Süreci
-Düzeltme Sayfası
-
-
-
-
-
-
-
-
-
-Gelişmiş Beceriler
-
-
 
 Referanslar
 MiniLibX Belgeleri
